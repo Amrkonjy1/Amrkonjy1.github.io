@@ -1,0 +1,25 @@
+<div class="section" *ngFor="let doc of listofDoc">
+    <div>
+        <a  [routerLink]="['/update',doc.id]">
+            <p> Name: {{ doc.name }} </p>
+          <div>
+              <p *ngIf="doc.state =='on' ;else stateOff"> State: {{doc.state}} <br>Type of garbage:  {{doc.garbage}} </p>
+          </div>
+          <ng-template #stateOff>{{doc.state}}</ng-template> 
+            </a>
+            <div>
+              <p *ngIf="(doc.garbage == 'pvc' || doc.garbage == 'pet' || doc.garbage == 'pp')">Plastic</p>
+              <p *ngIf="(doc.garbage == 'cartons' || doc.garbage == 'cardboard' )">Paper</p>
+              <p *ngIf="(doc.garbage == 'aluminum' || doc.garbage == 'steel' )">Metal</p>
+
+
+              <p *ngIf="(doc.garbage == 'pvc'|| doc.garbage == 'pet' || doc.garbage == 'pp' || doc.garbage == 'cartons' || doc.garbage == 'cardboard' || doc.garbage == 'aluminum' || doc.garbage == 'steel') && (doc.state =='on')">Recycle</p>
+              
+              <ng-template #NonRecycle>NonRecycle</ng-template> 
+            </div>
+            <div>
+              <p *ngIf="doc.state =='on'  && doc.garbage != 'pvc' && doc.garbage != 'pet' && doc.garbage != 'pp' && doc.garbage != 'cartons' && doc.garbage != 'cardboard' && doc.garbage != 'aluminum' && doc.garbage != 'steel'">NonRecycle</p>              
+            </div>
+    </div>
+   
+  </div>

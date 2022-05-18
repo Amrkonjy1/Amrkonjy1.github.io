@@ -1,0 +1,48 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onUpdate()" #f="ngForm">
+        <div id="user-data">
+          <div class="form-group">
+            <label for="name">Sensor name</label>
+            <input 
+            type="text" 
+            id="name" 
+            class="form-control"
+            [ngModel] = "doc.name"
+            name="name"
+            required/>
+          </div>
+          <div class="form-group">
+            <label for="email"> Sensor State</label>
+            <input 
+            type="text" 
+            id="State" 
+            class="form-control"
+            [ngModel] = "doc.state"
+            name="State"
+            required
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="secret">garbage</label>
+          <input
+          type="text"
+          id="garbage"
+          class="form-control"
+          [ngModel] = "doc.garbage"
+          name="garbage">
+          
+        </div>
+        <button [disabled]="!f.valid" class="btn btn-primary" type="submit">
+            Update
+
+        </button>
+      </form>
+
+     
+    </div>
+  </div>
+</div>
